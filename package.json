@@ -30,5 +30,17 @@
     "vite"
   ],
   "author": "Prakalp Labs Engineering Team",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.25",
+    "@types/express-serve-static-core": "^4.19.9",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.6.5"
+  }
 }
