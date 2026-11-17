@@ -307,6 +307,11 @@ const initialProjects = [
 ];
 
 async function seed() {
+  const initialAdminPassword = process.env.SEED_ADMIN_PASSWORD;
+  if (!initialAdminPassword) {
+    throw new Error("SEED_ADMIN_PASSWORD must be configured before seeding");
+  }
+
   console.log("[Seed] Connecting to MongoDB...");
   const conn = await connectDB();
   if (!conn) {
@@ -339,14 +344,14 @@ async function seed() {
   const existingAdmin = await Admin.findOne({ email: adminEmail });
   if (!existingAdmin) {
     const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash("Admin@Prakalp2026!", salt);
+    const passwordHash = await bcrypt.hash(initialAdminPassword, salt);
     await Admin.create({
       email: adminEmail,
       name: "Lead System Administrator",
       passwordHash,
       role: "superadmin",
     });
-    console.log(`[Seed] Created initial administrator: ${adminEmail} (password: Admin@Prakalp2026!)`);
+    console.log(`[Seed] Created initial administrator: ${adminEmail}`);
   } else {
     console.log(`[Seed] Administrator account ${adminEmail} already exists.`);
   }

@@ -121,11 +121,12 @@ Create `backend/.env` (or copy from `backend/.env.example`):
 ```env
 PORT=5000
 NODE_ENV=development
-MONGODB_URI=mongodb://127.0.0.1:27017/prakalp_labs
-JWT_SECRET=prakalp_labs_jwt_secret_dev_key_do_not_use_in_prod_9876
+MONGODB_URI=
+JWT_SECRET=
 JWT_EXPIRES_IN=7d
 FRONTEND_URL=http://localhost:3000
-ADMIN_SETUP_SECRET=prakalp_admin_setup_key_2026
+ADMIN_SETUP_SECRET=
+SEED_ADMIN_PASSWORD=
 ```
 
 ---
@@ -135,9 +136,9 @@ If running with a live MongoDB instance, populate the initial 8 services, demons
 ```bash
 npm run seed
 ```
-This sets up the default administrator account:
+Set `SEED_ADMIN_PASSWORD` in `backend/.env` before running the seed command. This creates the initial administrator account:
 - **Email:** `admin@prakalplabs.internal`
-- **Password:** `PrakalpAdmin2026!`
+- **Password:** The value configured in `SEED_ADMIN_PASSWORD`.
 
 ---
 
